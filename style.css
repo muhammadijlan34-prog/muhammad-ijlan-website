@@ -96,3 +96,133 @@ section h2{
     transform:translateY(-8px);
     border-color:#c79cff;
 }
+/* ===== Why Choose ===== */
+
+.why-choose{
+    background:#121520;
+}
+
+/* ===== About ===== */
+
+.about{
+    text-align:center;
+    background:#0f1117;
+}
+
+.about p{
+    max-width:650px;
+    margin:20px auto;
+    color:#c8c8c8;
+    line-height:1.8;
+}
+
+.about-btn{
+    display:inline-block;
+    margin-top:20px;
+    padding:15px 35px;
+    border-radius:40px;
+    background:#8b5cf6;
+    color:#fff;
+    text-decoration:none;
+    transition:.35s;
+}
+
+.about-btn:hover{
+    background:#a855f7;
+}
+
+/* ===== Contact ===== */
+
+.contact{
+    text-align:center;
+    background:#121520;
+}
+
+.contact p{
+    margin:20px 0 35px;
+    color:#c8c8c8;
+}
+
+/* ===== Footer ===== */
+
+footer{
+    padding:35px 20px;
+    text-align:center;
+    background:#090b11;
+    color:#bdbdbd;
+}
+
+.footer-tag{
+    margin-top:10px;
+    color:#9b5cff;
+}
+
+/* ===== Scroll Animation ===== */
+
+.card,
+.about,
+.contact,
+footer{
+    animation:fadeUp .8s ease;
+}
+
+@keyframes fadeUp{
+
+from{
+    opacity:0;
+    transform:translateY(35px);
+}
+
+to{
+    opacity:1;
+    transform:translateY(0);
+}
+
+}
+
+/* ===== Purple Glow ===== */
+
+.hero::before{
+
+content:"";
+
+position:absolute;
+
+width:350px;
+height:350px;
+
+background:#7d3cff;
+
+filter:blur(170px);
+
+opacity:.18;
+
+top:10%;
+
+left:50%;
+
+transform:translateX(-50%);
+
+}
+
+/* ===== Responsive ===== */
+
+@media(max-width:768px){
+
+.hero h1{
+font-size:36px;
+}
+
+.tagline{
+font-size:20px;
+}
+
+.subtitle{
+font-size:15px;
+}
+
+section{
+padding:60px 18px;
+}
+
+}
