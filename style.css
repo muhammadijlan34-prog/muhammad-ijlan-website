@@ -410,3 +410,21 @@ background:#a855f7;
 .logo img:hover{
     transform:scale(1.08);
 }
+#installBtn{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    background:#8b5cf6;
+    color:#fff;
+    border:none;
+    border-radius:30px;
+    padding:12px 20px;
+    font-size:15px;
+    cursor:pointer;
+    box-shadow:0 5px 15px rgba(0,0,0,.3);
+    z-index:999;
+}
+
+#installBtn:hover{
+    transform:scale(1.05);
+}
