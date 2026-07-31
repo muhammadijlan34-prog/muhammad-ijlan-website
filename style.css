@@ -477,3 +477,8 @@ transition:.3s;
 .footer-links a:hover{
 color:#fff;
 }
+main,
+.about,
+.gallery{
+    padding-top:120px;
+}
