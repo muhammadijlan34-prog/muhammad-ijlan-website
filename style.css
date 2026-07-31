@@ -395,3 +395,18 @@ background:#a855f7;
     margin:8px 0;
     font-size:15px;
 }
+.logo{
+    display:flex;
+    align-items:center;
+}
+
+.logo img{
+    height:60px;
+    width:auto;
+    display:block;
+    transition:0.3s ease;
+}
+
+.logo img:hover{
+    transform:scale(1.08);
+}
