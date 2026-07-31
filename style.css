@@ -428,3 +428,23 @@ background:#a855f7;
 #installBtn:hover{
     transform:scale(1.05);
 }
+.audio-info{
+    color:#bdbdbd;
+    font-size:14px;
+    margin:10px 0;
+}
+
+.download-btn{
+    display:inline-block;
+    margin-top:10px;
+    padding:10px 18px;
+    background:#8b5cf6;
+    color:white;
+    text-decoration:none;
+    border-radius:8px;
+    transition:.3s;
+}
+
+.download-btn:hover{
+    background:#6d3fd8;
+}
