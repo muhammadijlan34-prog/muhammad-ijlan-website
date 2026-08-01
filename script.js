@@ -84,3 +84,8 @@ installBtn.addEventListener("click", async ()=>{
     await deferredPrompt.userChoice;
     deferredPrompt = null;
 });
+window.addEventListener("load", () => {
+    const preloader = document.getElementById("preloader");
+    preloader.style.opacity = "0";
+    preloader.style.visibility = "hidden";
+});
