@@ -575,3 +575,19 @@ main,
     font-size:15px;
     opacity:.8;
 }
+.download-btn{
+    display:inline-block;
+    margin-top:15px;
+    padding:10px 22px;
+    background:#8b5cf6;
+    color:#fff;
+    text-decoration:none;
+    border-radius:30px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.download-btn:hover{
+    transform:translateY(-3px);
+    opacity:.9;
+}
