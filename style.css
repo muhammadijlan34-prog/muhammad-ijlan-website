@@ -799,3 +799,54 @@ body{
         stroke-dashoffset:-400;
     }
 }
+.social-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+max-width:1000px;
+margin:auto;
+}
+
+.social-card{
+background:#171a24;
+padding:25px;
+border-radius:18px;
+text-align:center;
+transition:.3s;
+border:1px solid rgba(255,255,255,.08);
+}
+
+.social-card:hover{
+transform:translateY(-8px);
+box-shadow:0 15px 30px rgba(139,92,246,.30);
+}
+
+.social-card h3{
+margin-bottom:10px;
+}
+
+.social-card p{
+margin:10px 0 20px;
+opacity:.8;
+}
+
+.social-card a{
+display:inline-block;
+padding:12px 24px;
+background:#8b5cf6;
+color:#fff;
+text-decoration:none;
+border-radius:30px;
+font-weight:600;
+transition:.3s;
+}
+
+.social-card a:hover{
+background:#a855f7;
+}
+
+.social-card img{
+width:130px;
+border-radius:12px;
+margin:15px 0;
+}
