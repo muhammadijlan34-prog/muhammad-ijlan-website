@@ -630,3 +630,25 @@ main,
     50%{transform:scale(1.05);}
     100%{transform:scale(1);}
 }
+.card{
+    transition:0.4s ease;
+}
+
+.card:hover{
+    transform:translateY(-10px) scale(1.02);
+    box-shadow:0 15px 35px rgba(139,92,246,.35);
+}
+.logo img{
+    transition:.4s ease;
+}
+
+.logo img:hover{
+    transform:rotate(8deg) scale(1.08);
+}
+.gallery img{
+    transition:.4s ease;
+}
+
+.gallery img:hover{
+    transform:scale(1.05);
+}
