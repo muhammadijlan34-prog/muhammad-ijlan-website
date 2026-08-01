@@ -686,3 +686,15 @@ main,
         opacity:.5;
     }
 }
+body{
+    animation:pageFade .8s ease;
+}
+
+@keyframes pageFade{
+    from{
+        opacity:0;
+    }
+    to{
+        opacity:1;
+    }
+}
