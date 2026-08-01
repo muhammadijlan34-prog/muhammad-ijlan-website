@@ -57,11 +57,13 @@ navigator.vibrate?.(20);
 });
 
 console.log("Your Voice Website Loaded Successfully");
+/*
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
     navigator.serviceWorker.register("service-worker.js");
   });
 }
+*/
 let deferredPrompt;
 const installBtn = document.getElementById("installBtn");
 
