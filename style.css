@@ -769,3 +769,33 @@ body{
         height:80px;
     }
 }
+/* Premium Voice Wave */
+
+.voice-wave{
+    position:absolute;
+    left:0;
+    top:50%;
+    width:100%;
+    height:180px;
+    transform:translateY(-50%);
+    z-index:1;
+    opacity:.12;
+}
+
+.voice-wave path{
+    fill:none;
+    stroke:#A855F7;
+    stroke-width:4;
+    stroke-linecap:round;
+    stroke-dasharray:12 8;
+    animation:waveMove 8s linear infinite;
+}
+
+@keyframes waveMove{
+    from{
+        stroke-dashoffset:0;
+    }
+    to{
+        stroke-dashoffset:-400;
+    }
+}
