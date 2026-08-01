@@ -546,3 +546,32 @@ main,
     margin:8px 0;
     font-size:15px;
 }
+/* Skills Section */
+
+.skills{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+    margin-top:40px;
+}
+
+.skill-card{
+    background:#171a24;
+    padding:25px;
+    border-radius:15px;
+    text-align:center;
+    transition:.3s;
+}
+
+.skill-card:hover{
+    transform:translateY(-5px);
+}
+
+.skill-card h3{
+    margin-bottom:10px;
+}
+
+.skill-card p{
+    font-size:15px;
+    opacity:.8;
+}
