@@ -532,3 +532,17 @@ main,
     transform:translateY(-3px);
     box-shadow:0 10px 25px rgba(139,92,246,.35);
 }
+/* Footer */
+
+.footer{
+    text-align:center;
+    padding:30px 20px;
+    background:#171a24;
+    color:#b8bfd3;
+    margin-top:50px;
+}
+
+.footer p{
+    margin:8px 0;
+    font-size:15px;
+}
