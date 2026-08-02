@@ -476,7 +476,41 @@ section h2{
     box-shadow:0 12px 30px rgba(0,0,0,.08);
 
 }
+.card::before{
 
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    padding:2px;
+
+    border-radius:20px;
+
+    background:linear-gradient(
+        90deg,
+        #0F4C81,
+        #3B82F6,
+        #60A5FA,
+        #0F4C81
+    );
+
+    background-size:300% 300%;
+
+    animation:borderMove 4s linear infinite;
+
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+
+    -webkit-mask-composite:xor;
+
+    mask-composite:exclude;
+
+    pointer-events:none;
+
+}
 .card::before{
 
     content:"";
