@@ -702,21 +702,7 @@ section h2{
 
     .navbar{
 
-        flex-direction:column;
-
-        gap:18px;
-
-    }
-
-    .nav-links{
-
-        gap:18px;
-
-        flex-wrap:wrap;
-
-        justify-content:center;
-
-    }
+        
 
     .hero{
 
@@ -725,7 +711,11 @@ section h2{
         padding:90px 20px;
 
     }
+.logo{
 
+    margin-right:auto;
+
+}
     .hero-logo{
 
         width:90px;
@@ -787,19 +777,24 @@ section h2{
 
     color:#0F4C81;
 
+    margin-left:auto;
+
+
 }
 
 @media(max-width:768px){
 
     .navbar{
 
-        display:flex;
+    display:flex;
 
-        justify-content:space-between;
+    justify-content:space-between;
 
-        align-items:center;
+    align-items:center;
 
-    }
+    flex-direction:row;
+
+}
 
     .menu-btn{
 
