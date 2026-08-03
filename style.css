@@ -224,7 +224,7 @@ img{
     z-index:5;
 
     max-width:900px;
-    margin-top:-50px;
+    margin-top:-80px;
     animation:heroFade 1s ease;
 
 }
@@ -253,9 +253,9 @@ img{
 
 .hero-logo{
 
-    width:130px;
+    width:150px;
 
-    margin:0 auto 10px;
+    margin:0 auto 5px;
 
 }
 /* HERO TITLE */
