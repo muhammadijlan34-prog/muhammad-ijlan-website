@@ -777,3 +777,64 @@ section h2{
     }
 
 }
+.menu-btn{
+
+    display:none;
+
+    font-size:30px;
+
+    cursor:pointer;
+
+    color:#0F4C81;
+
+}
+
+@media(max-width:768px){
+
+    .navbar{
+
+        display:flex;
+
+        justify-content:space-between;
+
+        align-items:center;
+
+    }
+
+    .menu-btn{
+
+        display:block;
+
+    }
+
+    .nav-links{
+
+        position:absolute;
+
+        top:70px;
+
+        left:0;
+
+        width:100%;
+
+        background:#fff;
+
+        display:none;
+
+        flex-direction:column;
+
+        text-align:center;
+
+        padding:20px 0;
+
+        box-shadow:0 10px 25px rgba(0,0,0,.1);
+
+    }
+
+    .nav-links.active{
+
+        display:flex;
+
+    }
+
+}
