@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mip-vox.netlify.app/sitemap.xml
