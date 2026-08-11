@@ -879,3 +879,24 @@ section h2{
     }
 
 }
+.sample-voice{
+    text-align:center;
+}
+
+.sample-voice-btn{
+    display:inline-block;
+    background:#0F4C81;
+    color:#fff;
+    padding:14px 28px;
+    border-radius:50px;
+    font-weight:600;
+    text-decoration:none;
+    margin-top:10px;
+    transition:.35s;
+    box-shadow:0 12px 28px rgba(15,76,129,.20);
+}
+
+.sample-voice-btn:hover{
+    background:#2563EB;
+    transform:translateY(-4px);
+}
