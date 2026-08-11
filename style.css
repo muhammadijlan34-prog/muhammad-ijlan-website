@@ -883,20 +883,20 @@ section h2{
     text-align:center;
 }
 
-.sample-voice-btn{
-    display:inline-block;
-    background:#0F4C81;
-    color:#fff;
-    padding:14px 28px;
-    border-radius:50px;
-    font-weight:600;
-    text-decoration:none;
-    margin-top:10px;
-    transition:.35s;
-    box-shadow:0 12px 28px rgba(15,76,129,.20);
+.sample-voice-btn {
+    display: inline-block;
+    background: #145A8D;
+    color: #fff;
+    padding: 14px 28px;
+    border-radius: 50px;
+    font-weight: 600;
+    text-decoration: none;
+    margin-top: 10px;
+    box-shadow: 0 12px 28px rgba(20, 90, 141, 0.20);
+    transition: 0.3s;
 }
 
-.sample-voice-btn:hover{
-    background:#2563EB;
-    transform:translateY(-4px);
+.sample-voice-btn:hover {
+    background: #145A8D;
+    transform: translateY(-3px);
 }
