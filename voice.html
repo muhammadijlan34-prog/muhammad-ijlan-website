@@ -3,9 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Voice Samples | Muhammad Ijlan</title>
-
+<title>Voice Samples | MIP VOX – Muhammad Ijlan</title>
+<meta name="theme-color" content="#0F4C81">
 <link rel="stylesheet" href="style.css">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" href="assets/logo.png">
 
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZD4SECHHGR"></script>
@@ -15,105 +17,123 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-ZD4SECHHGR');
 </script>
-<link rel="icon" type="image/png" href="assets/logo.png">
 </head>
 
-<body>
+<body class="inner">
+
+<div id="progress" aria-hidden="true"></div>
 
 <nav class="navbar">
-
-<div class="logo">
-  <a href="index.html">
-    <img src="assets/logo.png" alt="MIP Logo">
-  </a>
-</div>
-
-<ul class="nav-links">
-<li><a href="index.html">Home</a></li>
-<li><a href="about.html">About</a></li>
-
-<li><a href="voice.html">Voice</a></li>
-<li><a href="index.html#contact">Contact</a></li>
-</ul>
-
+  <div class="logo">
+    <a href="index.html"><img src="assets/logo.png" alt="MIP Logo"></a>
+  </div>
+  <div class="menu-btn" id="menuBtn">☰</div>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="voice.html">Voice</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
 </nav>
 
-<section class="gallery">
+<section class="voice-page">
 
-<h1>Voice Samples</h1>
+  <h1>Voice Samples</h1>
+  <p>Official voice announcements. Listen to the latest updates.</p>
 
-<p>
-Official voice announcements. Listen to the latest updates.
-</p>
+  <!-- കാർഡുകൾ താഴത്തെ ലിസ്റ്റിൽ നിന്ന് തനിയെ ഉണ്ടാകുന്നു -->
+  <div class="cards audio-cards" id="audioList"></div>
 
-<div class="cards">
-
-<div class="card">
-
-<audio controls>
-    <source src="assets/background-announcement-1.m4a" type="audio/mp4">
-    Your browser does not support the audio element.
-</audio>
-<p class="audio-info">Duration: --:--</p>
-
-<a href="audio/sample1.m4a" download class="download-btn">
- Download
-</a>
-</div>
-
-<div class="card">
-
-<audio controls>
-    <source src="assets/background-announcement-1.m4a" type="audio/mp4">
-    Your browser does not support the audio element.
-</audio>
-<p class="audio-info">Duration: --:--</p>
-
-<a href="audio/sample2.mp3" download class="download-btn">
- Download
-</a>
-</div>
-
-<div class="card">
-
-<audio controls>
-    <source src="assets/background-announcement-2.m4a" type="audio/mp4">
-    Your browser does not support the audio element.
-</audio>
-
-<p class="audio-info">Duration: --:--</p>
-
-<a href="audio/sample3.mp3" download class="download-btn">
-📥 Download
-</a>
-
-</div>
-
-<br><br>
-
-<a href="index.html" class="about-btn">⬅ Back to Home</a>
+  <div class="back-wrap"><a href="index.html" class="about-btn">⬅ Back to Home</a></div>
 
 </section>
 
 <footer class="footer">
-<p>© 2026 Muhammad Ijlan. All Rights Reserved.</p>
+  <p>© 2026 Muhammad Ijlan. All Rights Reserved.</p>
+  <p>Your Voice For Every Occasion</p>
 </footer>
-<footer class="footer">
 
-<p>© 2026 Muhammad Ijlan. All Rights Reserved.</p>
+<script>
+/* ==========================================================
+   പുതിയ ഓഡിയോ ചേർക്കാൻ:
+   1) ഫയൽ GitHub-ലെ assets ഫോൾഡറിൽ അപ്‌ലോഡ് ചെയ്യുക
+   2) താഴെ ലിസ്റ്റിൽ ഒരു വരി കൂടി ചേർക്കുക (ഫയലിന്റെ പേര് കൃത്യമായിരിക്കണം)
+   ഉദാ:  { title: "Announcement 3", file: "assets/background-announcement-3.m4a" },
+   ========================================================== */
+var ANNOUNCEMENTS = [
+  { title: "Announcement 1", file: "assets/background-announcement-1.m4a" },
+  { title: "Announcement 2", file: "assets/background-announcement-2.m4a" }
+];
 
-<div class="footer-links">
+(function () {
+  var list = document.getElementById('audioList');
+  var players = [];
+  function fmt(s) {
+    if (!isFinite(s)) return '0:00';
+    s = Math.floor(s);
+    return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0');
+  }
 
-<a href="https://www.instagram.com/ijlan_mip?igsh=MTd6b3BtejBxNWo3dQ==" target="_blank">Instagram 1</a>
+  ANNOUNCEMENTS.forEach(function (item) {
+    var card = document.createElement('div');
+    card.className = 'card audio-card reveal';
+    card.innerHTML =
+      '<h3>🎙 ' + item.title + '</h3>' +
+      '<div class="wave" aria-hidden="true"></div>' +
+      '<div class="player">' +
+        '<button class="play-btn" type="button" aria-label="Play">▶</button>' +
+        '<div class="player-main">' +
+          '<input class="seek" type="range" min="0" max="100" value="0" step="0.1" aria-label="Seek">' +
+          '<div class="times"><span class="cur">0:00</span><span class="dur">--:--</span></div>' +
+        '</div>' +
+      '</div>' +
+      '<a class="download-btn" href="' + item.file + '" download="' +
+        item.title.replace(/\s+/g, '-') + '.' + item.file.split('.').pop() + '">📥 Download</a>';
+    list.appendChild(card);
 
-<a href="https://www.instagram.com/ibnusideeq?igsh=MWlkc2pxcWkyY2Zhcw==" target="_blank">Instagram 2</a>
+    var wave = card.querySelector('.wave');
+    for (var k = 0; k < 28; k++) {            // ശബ്ദതരംഗ ബാറുകൾ (പ്ലേ ചെയ്യുമ്പോൾ മാത്രം ഉയർന്നു താഴും)
+      var bar = document.createElement('span');
+      bar.style.setProperty('--h', (10 + Math.round(Math.random() * 20)) + 'px');
+      bar.style.animationDelay = (-Math.random()).toFixed(2) + 's';
+      wave.appendChild(bar);
+    }
 
-<a href="https://www.facebook.com/share/1GCZqGBgD7/" target="_blank">Facebook</a>
+    var audio = new Audio();
+    audio.preload = 'metadata';
+    audio.src = item.file;
+    players.push(audio);
 
-<a href="https://wa.me/91YOURNUMBER" target="_blank">WhatsApp</a>
+    var btn = card.querySelector('.play-btn'),
+        seek = card.querySelector('.seek'),
+        cur = card.querySelector('.cur'),
+        dur = card.querySelector('.dur');
 
-</div>
+    audio.addEventListener('loadedmetadata', function () { dur.textContent = fmt(audio.duration); });
+    audio.addEventListener('timeupdate', function () {
+      cur.textContent = fmt(audio.currentTime);
+      if (audio.duration) seek.value = (audio.currentTime / audio.duration) * 100;
+    });
+    audio.addEventListener('play', function () { btn.textContent = '⏸'; card.classList.add('playing'); });
+    audio.addEventListener('pause', function () { btn.textContent = '▶'; card.classList.remove('playing'); });
+    audio.addEventListener('ended', function () { audio.currentTime = 0; seek.value = 0; });
+    audio.addEventListener('error', function () { dur.textContent = 'File not found'; btn.disabled = true; });
 
-</footer>
+    btn.addEventListener('click', function () {
+      if (audio.paused) {
+        players.forEach(function (p) { if (p !== audio) p.pause(); });   // ഒരു സമയം ഒരെണ്ണം മാത്രം
+        audio.play();
+      } else {
+        audio.pause();
+      }
+    });
+    seek.addEventListener('input', function () {
+      if (audio.duration) audio.currentTime = (seek.value / 100) * audio.duration;
+    });
+  });
+})();
+</script>
+<a class="wa-float" href="https://wa.me/919061909294?text=Hello%20Muhammad%20Ijlan,%20I%20would%20like%20to%20know%20more%20about%20your%20voice%20announcement%20service." target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.3-.15-1.263-.465-2.403-1.485-.888-.795-1.484-1.77-1.66-2.07-.174-.3-.019-.465.13-.615.136-.135.301-.345.451-.52.146-.181.194-.301.297-.496.1-.21.049-.375-.025-.524-.075-.15-.672-1.62-.922-2.206-.24-.584-.487-.51-.672-.51-.172-.015-.371-.015-.571-.015-.2 0-.523.074-.797.359-.273.3-1.045 1.02-1.045 2.475s1.07 2.865 1.219 3.075c.149.18 2.095 3.195 5.076 4.483.709.3 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg><span>WhatsApp</span></a>
+<script src="script.js"></script>
 </body>
 </html>

@@ -233,8 +233,6 @@ img{
 
 }
 
-}
-
 @keyframes heroFade{
 
     from{
@@ -431,78 +429,11 @@ section h2{
     box-shadow:0 12px 30px rgba(0,0,0,.08);
 
 }
-.card::before{
-
-    content:"";
-
-    position:absolute;
-
-    inset:0;
-
-    padding:2px;
-
-    border-radius:20px;
-
-    background:linear-gradient(
-        90deg,
-        #0F4C81,
-        #3B82F6,
-        #60A5FA,
-        #0F4C81
-    );
-
-    background-size:300% 300%;
-
-    animation:borderMove 4s linear infinite;
-
-    -webkit-mask:
-        linear-gradient(#fff 0 0) content-box,
-        linear-gradient(#fff 0 0);
-
-    -webkit-mask-composite:xor;
-
-    mask-composite:exclude;
-
-    pointer-events:none;
-
+@property --a{
+    syntax:'<angle>';
+    initial-value:0deg;
+    inherits:false;
 }
-.card::before{
-
-    content:"";
-
-    position:absolute;
-
-    inset:-2px;
-
-    border-radius:20px;
-
-    background:linear-gradient(
-        90deg,
-        #0F4C81,
-        #3B82F6,
-        #0F4C81
-    );
-
-    background-size:300%;
-
-    animation:borderMove 4s linear infinite;
-
-    z-index:-1;
-
-}
-
-@keyframes borderMove{
-
-    0%{
-        background-position:0% 50%;
-    }
-
-    100%{
-        background-position:300% 50%;
-    }
-
-}
-
 .card h3{
 
     color:#0F4C81;
@@ -547,31 +478,6 @@ section h2{
     overflow:hidden;
 
     box-shadow:0 12px 30px rgba(0,0,0,.08);
-
-}
-
-.social-card::before{
-
-    content:"";
-
-    position:absolute;
-
-    inset:-2px;
-
-    border-radius:20px;
-
-    background:linear-gradient(
-        90deg,
-        #0F4C81,
-        #3B82F6,
-        #0F4C81
-    );
-
-    background-size:300%;
-
-    animation:borderMove 4s linear infinite;
-
-    z-index:-1;
 
 }
 
@@ -652,75 +558,15 @@ section h2{
 }
 
 /* RESPONSIVE */
-
 @media(max-width:768px){
-
-    .navbar{
-
-        
-
-    .hero{
-
-        min-height:88vh;
-
-        padding:90px 20px;
-
+    .logo{
+        margin-right:auto;
     }
-.logo{
-
-    margin-right:auto;
-
 }
-    .hero-logo{
-
-        width:90px;
-
-    }
-
-    .hero h1{
-
-        font-size:2.5rem;
-
-        line-height:1.15;
-
-    }
-
-    .tagline{
-
-        font-size:1.05rem;
-
-    }
-
-    .subtitle{
-
-        font-size:.95rem;
-
-    }
-
-    .social-grid{
-
-        grid-template-columns:1fr 1fr;
-
-        gap:18px;
-
-    }
-
-    section{
-
-        padding:70px 20px;
-
-    }
-
-}
-
 @media(max-width:520px){
-
     .social-grid{
-
         grid-template-columns:1fr;
-
     }
-
 }
 .menu-btn{
 
@@ -900,3 +746,265 @@ section h2{
     background: #145A8D;
     transform: translateY(-3px);
 }
+
+
+/* =========================================
+   MIP VOX refinement: compact section rhythm
+   Existing card grid, widths and card padding are intentionally preserved.
+========================================= */
+:root{--navy:#0d4a80;--sky:#1fa2e8}
+body{overflow-x:hidden}
+#progress{position:fixed;top:0;left:0;height:3px;width:100%;z-index:10001;pointer-events:none;
+  background:linear-gradient(90deg,var(--navy),var(--sky));transform-origin:0 50%;transform:scaleX(0)}
+.ribbon{margin:18px 0 4px;padding:12px 0;overflow:hidden;transform:rotate(-1.2deg);
+  background:#fff;border-block:1px solid #cfe3f2;box-shadow:0 6px 20px rgba(13,74,128,.08)}
+.ribbon-track{display:flex;width:max-content;will-change:transform}
+.ribbon-item{display:flex;align-items:center;gap:20px;padding-right:22px;white-space:nowrap;
+  font-size:clamp(20px,3vw,27px);font-weight:800;letter-spacing:.04em}
+.ribbon-item .w{display:inline-flex}.ribbon-item .a,.ribbon-item .v{color:#0d4a80}
+.ribbon-item .b{color:#111}.ribbon-item .v{letter-spacing:.18em}
+.ribbon-item i{font-style:normal;color:#0d4a80;font-size:17px}
+/* Reduce only the large empty vertical spaces between homepage sections. */
+body > section{padding-top:48px;padding-bottom:48px}
+body > section h2{margin-bottom:30px}
+/* Keep the original card grid columns, widths, gaps and padding unchanged. */
+.reveal{opacity:0;transform:translateY(22px);filter:blur(5px);
+  transition:opacity .55s ease,transform .55s cubic-bezier(.2,.8,.2,1),filter .55s ease}
+.reveal.show-card{opacity:1;transform:none;filter:none}
+.glow{position:relative;overflow:hidden;isolation:isolate}
+.glow::after{content:"";position:absolute;top:0;left:-65%;width:42%;height:100%;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);
+  transform:skewX(-20deg);animation:mipShine 3.2s ease-in-out infinite;pointer-events:none}
+@keyframes mipShine{0%,45%{left:-65%}85%,100%{left:140%}}
+@media(max-width:768px){
+  body > section{padding-top:38px;padding-bottom:38px}
+  body > section h2{margin-bottom:26px}
+  .ribbon{margin-top:12px;margin-bottom:0;padding:10px 0}
+}
+@media(prefers-reduced-motion:reduce){
+  .reveal{transition:none;opacity:1;transform:none;filter:none}
+  .glow::after{animation:none}
+}
+
+/* =========================================
+   MIP VOX final additions
+========================================= */
+
+/* ബട്ടണിന് പുറത്ത് ഇളം നീല വെളിച്ചം മിന്നുന്നു
+   (2.2s = ഒരു തവണ മിന്നാൻ എടുക്കുന്ന സമയം; കൂട്ടിയാൽ പതുക്കെയാകും) */
+.glow{ animation:mipPulse 2.2s ease-in-out infinite; }
+@keyframes mipPulse{
+    0%,100%{ box-shadow:0 12px 28px rgba(15,76,129,.20),0 0 0 0 rgba(96,165,250,.55); }
+    50%{ box-shadow:0 12px 28px rgba(15,76,129,.20),0 0 0 12px rgba(96,165,250,0),0 0 28px rgba(96,165,250,.7); }
+}
+
+/* കാർഡുകൾ: തെളിഞ്ഞു വരൽ + കറങ്ങുന്ന ഇളം നീല വര + തിളക്കം
+   (8s = ഒരു കറക്കത്തിന്റെ സമയം; കൂട്ടിയാൽ കൂടുതൽ പതുക്കെ) */
+.reveal{ transition:opacity .55s ease,transform .55s cubic-bezier(.2,.8,.2,1),filter .55s ease,box-shadow .3s ease; }
+.card,
+.social-card{ overflow:visible; }
+.card::before,
+.card::after,
+.social-card::before,
+.social-card::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    padding:2px;
+    border-radius:inherit;
+    background:conic-gradient(from var(--a),transparent 0 68%,#93C5FD 88%,#3B82F6 100%);
+    -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+    -webkit-mask-composite:xor;
+    mask-composite:exclude;
+    animation:ringSpin 8s linear infinite;
+    pointer-events:none;
+}
+.card::after,
+.social-card::after{
+    padding:3px;
+    filter:blur(7px);
+    opacity:.8;
+}
+@keyframes ringSpin{ to{ --a:360deg; } }
+/* കാർഡുകൾ ഒരേ സമയം ഒരേ സ്ഥാനത്ത് കറങ്ങാതിരിക്കാൻ ചെറിയ വ്യത്യാസം */
+.cards > :nth-child(2)::before,.cards > :nth-child(2)::after,
+.social-grid > :nth-child(2)::before,.social-grid > :nth-child(2)::after{ animation-delay:-2s; }
+.cards > :nth-child(3)::before,.cards > :nth-child(3)::after,
+.social-grid > :nth-child(3)::before,.social-grid > :nth-child(3)::after{ animation-delay:-4s; }
+.social-grid > :nth-child(4)::before,.social-grid > :nth-child(4)::after{ animation-delay:-6s; }
+.card.show-card:hover,
+.social-card.show-card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 0 30px rgba(59,130,246,.35);
+}
+
+/* Home: About ഭാഗം നടുവിൽ */
+.center{ text-align:center; }
+.about.center > p,
+.sample-voice > p,
+.contact > p{ max-width:620px; margin:0 auto 18px; }
+
+/* QR: കറുത്ത പശ്ചാത്തലമില്ലാതെ */
+.qr-image{
+    width:124px;
+    margin:6px auto 14px;
+    border-radius:12px;
+    border:1px solid #dbe7f3;
+    background:#fff;
+}
+
+/* Follow Me: ഒരു നിരയിൽ ഒന്നൊന്നായി, മിതമായ വലുപ്പത്തിൽ */
+.social{ padding-bottom:40px; }
+.social-grid{ grid-template-columns:1fr; max-width:340px; margin:0 auto; gap:18px; }
+.social-card{
+    padding:22px 18px;
+    border-radius:20px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+.social-icon{ font-size:36px; margin-bottom:10px; }
+.social-card h3{ font-size:1.08rem; margin-bottom:2px; }
+.social-card p{ font-size:.9rem; margin-bottom:14px; }
+.social-btn{ padding:11px 28px; font-size:.95rem; }
+
+/* ---------- ഉള്ളിലെ പേജുകൾ (About, Voice) ---------- */
+body.inner section{ max-width:1000px; margin:0 auto; padding:54px 8%; }
+body.inner h1{
+    color:#0F4C81;
+    text-align:center;
+    font-size:clamp(2rem,5vw,2.8rem);
+    margin-bottom:14px;
+}
+body.inner section > p{
+    max-width:720px;
+    margin:0 auto 18px;
+    text-align:center;
+    color:#444;
+}
+.skills{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:22px;
+    margin:34px 0;
+}
+.skill-card{
+    background:#fff;
+    padding:26px;
+    border-radius:20px;
+    text-align:center;
+    box-shadow:0 12px 30px rgba(0,0,0,.08);
+}
+.skill-card h3{ color:#0F4C81; margin-bottom:10px; }
+.skill-card p{ color:#555; font-size:.97rem; }
+.back-wrap{ text-align:center; margin-top:34px; }
+
+/* Voice പേജ്: പ്ലെയർ */
+.audio-cards{ max-width:760px; margin:30px auto 0; grid-template-columns:1fr; }
+.audio-card h3{ margin-bottom:14px; }
+.player{ display:flex; align-items:center; gap:16px; margin:4px 0 20px; text-align:left; }
+.play-btn{
+    flex:none; width:54px; height:54px; border-radius:50%; border:0; cursor:pointer;
+    background:#0F4C81; color:#fff; font-size:18px;
+    box-shadow:0 8px 20px rgba(15,76,129,.28); transition:.3s;
+}
+.play-btn:hover{ background:#2563EB; }
+.play-btn:disabled{ background:#aab8c6; cursor:not-allowed; box-shadow:none; }
+.audio-card.playing .play-btn{ animation:mipPulse 1.8s ease-in-out infinite; }
+.player-main{ flex:1; min-width:0; }
+.seek{ width:100%; accent-color:#0F4C81; cursor:pointer; }
+.times{ display:flex; justify-content:space-between; font-size:.85rem; color:#666; margin-top:2px; }
+.download-btn{
+    display:inline-block;
+    background:#0F4C81;
+    color:#fff;
+    padding:12px 26px;
+    border-radius:50px;
+    font-weight:600;
+    box-shadow:0 10px 24px rgba(15,76,129,.2);
+    transition:.3s;
+}
+.download-btn:hover{ background:#2563EB; transform:translateY(-3px); }
+
+/* ---------- ഡെസ്ക്ടോപ്പ് / ലാപ്ടോപ്പ് ---------- */
+@media(min-width:900px){
+    .navbar{ padding:10px 8%; }
+    .logo img{ width:62px; }
+    .hero{ min-height:86vh; }
+    .hero-logo{ width:230px; }
+    section h2{ font-size:2.5rem; margin-bottom:40px; }
+    .cards{ grid-template-columns:repeat(3,1fr); max-width:1100px; margin:0 auto; }
+    .audio-cards{ grid-template-columns:1fr; max-width:760px; }
+    .ribbon-item{ font-size:30px; }
+}
+@media(min-width:1400px){
+    .hero-logo{ width:260px; }
+    .cards{ max-width:1200px; }
+}
+
+@media(prefers-reduced-motion:reduce){
+    .glow,.card::before,.card::after,.social-card::before,.social-card::after,.audio-card.playing .play-btn{ animation:none; }
+}
+
+/* ---------- ഹീറോയിലെ ടൈപ്പിംഗ് വരി ---------- */
+.subtitle{ margin-bottom:14px; }
+.typed-line{
+    min-height:1.9em;
+    margin:0 0 26px;
+    font-size:1.1rem;
+    font-weight:600;
+    color:#0F4C81;
+}
+.caret{
+    display:inline-block;
+    width:2px;
+    height:1.1em;
+    margin-left:3px;
+    vertical-align:-3px;
+    background:#0F4C81;
+    animation:caretBlink 1s steps(1) infinite;
+}
+@keyframes caretBlink{ 50%{ opacity:0; } }
+
+/* ---------- പറ്റിനിൽക്കുന്ന WhatsApp ബട്ടൺ ---------- */
+.wa-float{
+    position:fixed;
+    right:18px;
+    bottom:calc(18px + env(safe-area-inset-bottom,0px));
+    z-index:950;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    background:#0F4C81;
+    color:#fff;
+    padding:13px 20px;
+    border-radius:50px;
+    font-weight:600;
+    font-size:.95rem;
+    box-shadow:0 6px 18px rgba(15,76,129,.25),0 0 14px rgba(96,165,250,.45);   /* മൃദുവായ ഇളം നീല തിളക്കം, മിന്നലില്ല */
+}
+.wa-float svg{ flex:none; }
+#installBtn{ right:auto; left:18px; }
+@media(max-width:380px){ .wa-float span{ display:none; } .wa-float{ padding:14px; } }
+
+/* ---------- ഓഡിയോ പ്ലെയർ: ശബ്ദതരംഗ ബാറുകൾ ---------- */
+.wave{
+    display:flex;
+    align-items:flex-end;
+    justify-content:center;
+    gap:3px;
+    height:34px;
+    margin:0 0 14px;
+}
+.wave span{
+    width:3px;
+    height:6px;
+    border-radius:3px;
+    background:#93C5FD;
+}
+.audio-card.playing .wave span{
+    background:#3B82F6;
+    animation:waveBar 1s ease-in-out infinite;
+}
+@keyframes waveBar{ 0%,100%{ height:6px; } 50%{ height:var(--h,24px); } }
+@media(prefers-reduced-motion:reduce){ .caret,.audio-card.playing .wave span{ animation:none; } }
